@@ -1,5 +1,31 @@
-export default
-{
+export interface HierarchyDatum {
+    name: string;
+    value?: number;
+    index?: number;
+    y0?: number;
+    y1?: number;
+    children?: Iterable<HierarchyDatum>;
+}
+
+export interface dataSet{
+    y0?:number;
+    y1?:number;
+    index?: number;
+    data?:{
+        name: string;
+        value:number;
+    }
+}
+
+export interface margintype {
+    top: number;
+    bottom: number;
+    left: number;
+    right:number;
+}
+
+
+export let data: HierarchyDatum = {
  "name": "flare",
  "children": [
   {
