@@ -89,16 +89,19 @@ let yAxis = axisLeft(yScale).ticks(width/80, "s")
 
 const color = scaleSequential(interpolateBlues).domain([-10.5 * 2, 1.0 * 28])
 
+//x축 줌(zoom) 용도
 function myzoom(svg:Selection<SVGSVGElement, unknown, HTMLElement, any>){
-    const extent:number[][]= [[margin.left, margin.top], [width - margin.right, height - margin.top]];
-
-    svg.call(zoom()
+    const extent:[[number, number], [number, number]]= [[margin.left, margin.top], [width - margin.right, height - margin.top]];
+    
+    const mZoom = zoom<SVGSVGElement, unknown>()
         .scaleExtent([1,8])
         .translateExtent(extent)
         .extent(extent)
-        .on("zoom",myzoomed));
+        .on("zoom",myzoomed) 
 
-    function myzoomed(event){
+    svg.call(mZoom);
+
+    function myzoomed(event:any){
         let xlabel:string[] = [];
         xScale.range([margin.left, width - margin.right].map(d=>event.transform.applyX(d)));
         
@@ -402,11 +405,11 @@ function xmax ():number {
     return max
   }
 
-function maxwidth():number{
-    let max = 1;
-    root.each(d => d.children && (max = Math.max(max, d.children.length)));
-    return max * xScale.step() + margin.left + margin.right;
-  }
+// function maxwidth():number{
+//     let max = 1;
+//     root.each(d => d.children && (max = Math.max(max, d.children.length)));
+//     return max * xScale.step() + margin.left + margin.right;
+//   }
 
 
 chart()

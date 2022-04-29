@@ -7,399 +7,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/data.ts":
-/*!*********************!*\
-  !*** ./src/data.ts ***!
-  \*********************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.data = void 0;
-exports.data = {
-    "name": "flare",
-    "children": [
-        {
-            "name": "analytics",
-            "children": [
-                {
-                    "name": "cluster",
-                    "children": [
-                        { "name": "AgglomerativeCluster", "value": 3938 },
-                        { "name": "CommunityStructure", "value": 3812 },
-                        { "name": "HierarchicalCluster", "value": 6714 },
-                        { "name": "MergeEdge", "value": 743 }
-                    ]
-                },
-                {
-                    "name": "graph",
-                    "children": [
-                        { "name": "BetweennessCentrality", "value": 3534 },
-                        { "name": "LinkDistance", "value": 5731 },
-                        { "name": "MaxFlowMinCut", "value": 7840 },
-                        { "name": "ShortestPaths", "value": 5914 },
-                        { "name": "SpanningTree", "value": 3416 }
-                    ]
-                },
-                {
-                    "name": "optimization",
-                    "children": [
-                        { "name": "AspectRatioBanker", "value": 7074 }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "animate",
-            "children": [
-                { "name": "Easing", "value": 17010 },
-                { "name": "FunctionSequence", "value": 5842 },
-                {
-                    "name": "interpolate",
-                    "children": [
-                        { "name": "ArrayInterpolator", "value": 1983 },
-                        { "name": "ColorInterpolator", "value": 2047 },
-                        { "name": "DateInterpolator", "value": 1375 },
-                        { "name": "Interpolator", "value": 8746 },
-                        { "name": "MatrixInterpolator", "value": 2202 },
-                        { "name": "NumberInterpolator", "value": 1382 },
-                        { "name": "ObjectInterpolator", "value": 1629 },
-                        { "name": "PointInterpolator", "value": 1675 },
-                        { "name": "RectangleInterpolator", "value": 2042 }
-                    ]
-                },
-                { "name": "ISchedulable", "value": 1041 },
-                { "name": "Parallel", "value": 5176 },
-                { "name": "Pause", "value": 449 },
-                { "name": "Scheduler", "value": 5593 },
-                { "name": "Sequence", "value": 5534 },
-                { "name": "Transition", "value": 9201 },
-                { "name": "Transitioner", "value": 19975 },
-                { "name": "TransitionEvent", "value": 1116 },
-                { "name": "Tween", "value": 6006 }
-            ]
-        },
-        {
-            "name": "data",
-            "children": [
-                {
-                    "name": "converters",
-                    "children": [
-                        { "name": "Converters", "value": 721 },
-                        { "name": "DelimitedTextConverter", "value": 4294 },
-                        { "name": "GraphMLConverter", "value": 9800 },
-                        { "name": "IDataConverter", "value": 1314 },
-                        { "name": "JSONConverter", "value": 2220 }
-                    ]
-                },
-                { "name": "DataField", "value": 1759 },
-                { "name": "DataSchema", "value": 2165 },
-                { "name": "DataSet", "value": 586 },
-                { "name": "DataSource", "value": 3331 },
-                { "name": "DataTable", "value": 772 },
-                { "name": "DataUtil", "value": 3322 }
-            ]
-        },
-        {
-            "name": "display",
-            "children": [
-                { "name": "DirtySprite", "value": 8833 },
-                { "name": "LineSprite", "value": 1732 },
-                { "name": "RectSprite", "value": 3623 },
-                { "name": "TextSprite", "value": 10066 }
-            ]
-        },
-        {
-            "name": "flex",
-            "children": [
-                { "name": "FlareVis", "value": 4116 }
-            ]
-        },
-        {
-            "name": "physics",
-            "children": [
-                { "name": "DragForce", "value": 1082 },
-                { "name": "GravityForce", "value": 1336 },
-                { "name": "IForce", "value": 319 },
-                { "name": "NBodyForce", "value": 10498 },
-                { "name": "Particle", "value": 2822 },
-                { "name": "Simulation", "value": 9983 },
-                { "name": "Spring", "value": 2213 },
-                { "name": "SpringForce", "value": 1681 }
-            ]
-        },
-        {
-            "name": "query",
-            "children": [
-                { "name": "AggregateExpression", "value": 1616 },
-                { "name": "And", "value": 1027 },
-                { "name": "Arithmetic", "value": 3891 },
-                { "name": "Average", "value": 891 },
-                { "name": "BinaryExpression", "value": 2893 },
-                { "name": "Comparison", "value": 5103 },
-                { "name": "CompositeExpression", "value": 3677 },
-                { "name": "Count", "value": 781 },
-                { "name": "DateUtil", "value": 4141 },
-                { "name": "Distinct", "value": 933 },
-                { "name": "Expression", "value": 5130 },
-                { "name": "ExpressionIterator", "value": 3617 },
-                { "name": "Fn", "value": 3240 },
-                { "name": "If", "value": 2732 },
-                { "name": "IsA", "value": 2039 },
-                { "name": "Literal", "value": 1214 },
-                { "name": "Match", "value": 3748 },
-                { "name": "Maximum", "value": 843 },
-                {
-                    "name": "methods",
-                    "children": [
-                        { "name": "add", "value": 593 },
-                        { "name": "and", "value": 330 },
-                        { "name": "average", "value": 287 },
-                        { "name": "count", "value": 277 },
-                        { "name": "distinct", "value": 292 },
-                        { "name": "div", "value": 595 },
-                        { "name": "eq", "value": 594 },
-                        { "name": "fn", "value": 460 },
-                        { "name": "gt", "value": 603 },
-                        { "name": "gte", "value": 625 },
-                        { "name": "iff", "value": 748 },
-                        { "name": "isa", "value": 461 },
-                        { "name": "lt", "value": 597 },
-                        { "name": "lte", "value": 619 },
-                        { "name": "max", "value": 283 },
-                        { "name": "min", "value": 283 },
-                        { "name": "mod", "value": 591 },
-                        { "name": "mul", "value": 603 },
-                        { "name": "neq", "value": 599 },
-                        { "name": "not", "value": 386 },
-                        { "name": "or", "value": 323 },
-                        { "name": "orderby", "value": 307 },
-                        { "name": "range", "value": 772 },
-                        { "name": "select", "value": 296 },
-                        { "name": "stddev", "value": 363 },
-                        { "name": "sub", "value": 600 },
-                        { "name": "sum", "value": 280 },
-                        { "name": "update", "value": 307 },
-                        { "name": "variance", "value": 335 },
-                        { "name": "where", "value": 299 },
-                        { "name": "xor", "value": 354 },
-                        { "name": "_", "value": 264 }
-                    ]
-                },
-                { "name": "Minimum", "value": 843 },
-                { "name": "Not", "value": 1554 },
-                { "name": "Or", "value": 970 },
-                { "name": "Query", "value": 13896 },
-                { "name": "Range", "value": 1594 },
-                { "name": "StringUtil", "value": 4130 },
-                { "name": "Sum", "value": 791 },
-                { "name": "Variable", "value": 1124 },
-                { "name": "Variance", "value": 1876 },
-                { "name": "Xor", "value": 1101 }
-            ]
-        },
-        {
-            "name": "scale",
-            "children": [
-                { "name": "IScaleMap", "value": 2105 },
-                { "name": "LinearScale", "value": 1316 },
-                { "name": "LogScale", "value": 3151 },
-                { "name": "OrdinalScale", "value": 3770 },
-                { "name": "QuantileScale", "value": 2435 },
-                { "name": "QuantitativeScale", "value": 4839 },
-                { "name": "RootScale", "value": 1756 },
-                { "name": "Scale", "value": 4268 },
-                { "name": "ScaleType", "value": 1821 },
-                { "name": "TimeScale", "value": 5833 }
-            ]
-        },
-        {
-            "name": "util",
-            "children": [
-                { "name": "Arrays", "value": 8258 },
-                { "name": "Colors", "value": 10001 },
-                { "name": "Dates", "value": 8217 },
-                { "name": "Displays", "value": 12555 },
-                { "name": "Filter", "value": 2324 },
-                { "name": "Geometry", "value": 10993 },
-                {
-                    "name": "heap",
-                    "children": [
-                        { "name": "FibonacciHeap", "value": 9354 },
-                        { "name": "HeapNode", "value": 1233 }
-                    ]
-                },
-                { "name": "IEvaluable", "value": 335 },
-                { "name": "IPredicate", "value": 383 },
-                { "name": "IValueProxy", "value": 874 },
-                {
-                    "name": "math",
-                    "children": [
-                        { "name": "DenseMatrix", "value": 3165 },
-                        { "name": "IMatrix", "value": 2815 },
-                        { "name": "SparseMatrix", "value": 3366 }
-                    ]
-                },
-                { "name": "Maths", "value": 17705 },
-                { "name": "Orientation", "value": 1486 },
-                {
-                    "name": "palette",
-                    "children": [
-                        { "name": "ColorPalette", "value": 6367 },
-                        { "name": "Palette", "value": 1229 },
-                        { "name": "ShapePalette", "value": 2059 },
-                        { "name": "SizePalette", "value": 2291 }
-                    ]
-                },
-                { "name": "Property", "value": 5559 },
-                { "name": "Shapes", "value": 19118 },
-                { "name": "Sort", "value": 6887 },
-                { "name": "Stats", "value": 6557 },
-                { "name": "Strings", "value": 22026 }
-            ]
-        },
-        {
-            "name": "vis",
-            "children": [
-                {
-                    "name": "axis",
-                    "children": [
-                        { "name": "Axes", "value": 1302 },
-                        { "name": "Axis", "value": 24593 },
-                        { "name": "AxisGridLine", "value": 652 },
-                        { "name": "AxisLabel", "value": 636 },
-                        { "name": "CartesianAxes", "value": 6703 }
-                    ]
-                },
-                {
-                    "name": "controls",
-                    "children": [
-                        { "name": "AnchorControl", "value": 2138 },
-                        { "name": "ClickControl", "value": 3824 },
-                        { "name": "Control", "value": 1353 },
-                        { "name": "ControlList", "value": 4665 },
-                        { "name": "DragControl", "value": 2649 },
-                        { "name": "ExpandControl", "value": 2832 },
-                        { "name": "HoverControl", "value": 4896 },
-                        { "name": "IControl", "value": 763 },
-                        { "name": "PanZoomControl", "value": 5222 },
-                        { "name": "SelectionControl", "value": 7862 },
-                        { "name": "TooltipControl", "value": 8435 }
-                    ]
-                },
-                {
-                    "name": "data",
-                    "children": [
-                        { "name": "Data", "value": 20544 },
-                        { "name": "DataList", "value": 19788 },
-                        { "name": "DataSprite", "value": 10349 },
-                        { "name": "EdgeSprite", "value": 3301 },
-                        { "name": "NodeSprite", "value": 19382 },
-                        {
-                            "name": "render",
-                            "children": [
-                                { "name": "ArrowType", "value": 698 },
-                                { "name": "EdgeRenderer", "value": 5569 },
-                                { "name": "IRenderer", "value": 353 },
-                                { "name": "ShapeRenderer", "value": 2247 }
-                            ]
-                        },
-                        { "name": "ScaleBinding", "value": 11275 },
-                        { "name": "Tree", "value": 7147 },
-                        { "name": "TreeBuilder", "value": 9930 }
-                    ]
-                },
-                {
-                    "name": "events",
-                    "children": [
-                        { "name": "DataEvent", "value": 2313 },
-                        { "name": "SelectionEvent", "value": 1880 },
-                        { "name": "TooltipEvent", "value": 1701 },
-                        { "name": "VisualizationEvent", "value": 1117 }
-                    ]
-                },
-                {
-                    "name": "legend",
-                    "children": [
-                        { "name": "Legend", "value": 20859 },
-                        { "name": "LegendItem", "value": 4614 },
-                        { "name": "LegendRange", "value": 10530 }
-                    ]
-                },
-                {
-                    "name": "operator",
-                    "children": [
-                        {
-                            "name": "distortion",
-                            "children": [
-                                { "name": "BifocalDistortion", "value": 4461 },
-                                { "name": "Distortion", "value": 6314 },
-                                { "name": "FisheyeDistortion", "value": 3444 }
-                            ]
-                        },
-                        {
-                            "name": "encoder",
-                            "children": [
-                                { "name": "ColorEncoder", "value": 3179 },
-                                { "name": "Encoder", "value": 4060 },
-                                { "name": "PropertyEncoder", "value": 4138 },
-                                { "name": "ShapeEncoder", "value": 1690 },
-                                { "name": "SizeEncoder", "value": 1830 }
-                            ]
-                        },
-                        {
-                            "name": "filter",
-                            "children": [
-                                { "name": "FisheyeTreeFilter", "value": 5219 },
-                                { "name": "GraphDistanceFilter", "value": 3165 },
-                                { "name": "VisibilityFilter", "value": 3509 }
-                            ]
-                        },
-                        { "name": "IOperator", "value": 1286 },
-                        {
-                            "name": "label",
-                            "children": [
-                                { "name": "Labeler", "value": 9956 },
-                                { "name": "RadialLabeler", "value": 3899 },
-                                { "name": "StackedAreaLabeler", "value": 3202 }
-                            ]
-                        },
-                        {
-                            "name": "layout",
-                            "children": [
-                                { "name": "AxisLayout", "value": 6725 },
-                                { "name": "BundledEdgeRouter", "value": 3727 },
-                                { "name": "CircleLayout", "value": 9317 },
-                                { "name": "CirclePackingLayout", "value": 12003 },
-                                { "name": "DendrogramLayout", "value": 4853 },
-                                { "name": "ForceDirectedLayout", "value": 8411 },
-                                { "name": "IcicleTreeLayout", "value": 4864 },
-                                { "name": "IndentedTreeLayout", "value": 3174 },
-                                { "name": "Layout", "value": 7881 },
-                                { "name": "NodeLinkTreeLayout", "value": 12870 },
-                                { "name": "PieLayout", "value": 2728 },
-                                { "name": "RadialTreeLayout", "value": 12348 },
-                                { "name": "RandomLayout", "value": 870 },
-                                { "name": "StackedAreaLayout", "value": 9121 },
-                                { "name": "TreeMapLayout", "value": 9191 }
-                            ]
-                        },
-                        { "name": "Operator", "value": 2490 },
-                        { "name": "OperatorList", "value": 5248 },
-                        { "name": "OperatorSequence", "value": 4190 },
-                        { "name": "OperatorSwitch", "value": 2581 },
-                        { "name": "SortOperator", "value": 2023 }
-                    ]
-                },
-                { "name": "Visualization", "value": 16540 }
-            ]
-        }
-    ]
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/d3-array/src/array.js":
 /*!********************************************!*\
   !*** ./node_modules/d3-array/src/array.js ***!
@@ -34029,300 +33636,143 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!************************!*\
-  !*** ./src/d3Index.ts ***!
-  \************************/
+/*!********************************************!*\
+  !*** ./src/graph/percentage/percentage.ts ***!
+  \********************************************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const d3_hierarchy_1 = __webpack_require__(/*! d3-hierarchy */ "./node_modules/d3-hierarchy/src/index.js");
-const data_1 = __webpack_require__(/*! ./data */ "./src/data.ts");
+const d3_scale_1 = __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/index.js");
+const d3_selection_1 = __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/index.js");
+__webpack_require__(/*! d3-transition */ "./node_modules/d3-transition/src/index.js");
+const d3_shape_1 = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/index.js");
+const d3_interpolate_1 = __webpack_require__(/*! d3-interpolate */ "./node_modules/d3-interpolate/src/index.js");
 const d3_1 = __webpack_require__(/*! d3 */ "./node_modules/d3/src/index.js");
-let root = (0, d3_hierarchy_1.hierarchy)(data_1.data)
-    .sum((d) => d.value)
-    .sort((a, b) => {
-    if (a.value == undefined || b.value == undefined) {
-        return 0;
+class chart {
+    constructor(name, data) {
+        if (!name)
+            throw new Error("ID, class 값을 넣어주세요.");
+        this._tagname = name;
+        if (!data.inputvalue)
+            throw new Error("inputvalue 값을 넣어주세요.");
+        this.inputvalue = data.inputvalue;
+        if (!data.size)
+            throw new Error("size 값을 넣어주세요.");
+        this.sizestandard = data.size;
+        this.minvalue = 0;
+        if (data.start)
+            this.minvalue = data.start;
+        if (data.start && data.start >= this.inputvalue)
+            throw new Error("inputvalue가 end 보다 커야합니다.");
+        this.LevelText = "Level";
+        if (data.text1)
+            this.LevelText = data.text1;
+        this.numberText = `${this.minvalue}~${this.inputvalue}`;
+        if (data.text2)
+            this.numberText = data.text2;
+        this.numberTextRatio = 0.2;
+        if (data.textRatio)
+            this.numberTextRatio = data.textRatio;
+        this.color = ["#e6e6e6", "#6cd4a7", "#231f20"];
     }
-    else {
-        return b.value - a.value;
+    onClick(callback) {
+        var _a;
+        (_a = this._newArcs) === null || _a === void 0 ? void 0 : _a.on("click", (evt, data) => {
+            callback(evt, data);
+        });
     }
-})
-    .eachAfter((d, idx) => {
-    if (d.parent) {
-        d.data.value = d.value;
-        if (d.parent.data.index == undefined) {
-            d.parent.data.index = 0;
-            d.data.index = 0;
+    update(data) {
+        if (data) {
+            if (data.inputvalue)
+                this.inputvalue = data.inputvalue;
+            if (data.size)
+                this.sizestandard = data.size;
+            if (data.start) {
+                if (this.inputvalue <= data.start)
+                    throw new Error("start 값은 inputvalue 보다 작아야함");
+                this.minvalue = data.start;
+            }
+            if (data.text1)
+                this.LevelText = data.text1;
+            if (data.text2)
+                this.numberText = data.text2;
+            if (data.textRatio)
+                this.numberTextRatio = data.textRatio;
         }
-        else {
-            d.parent.data.index = d.parent.data.index + 1;
-            d.data.index = d.parent.data.index;
-        }
-        if (d.parent.data.y1 == undefined) {
-            d.data.y0 = 0;
-            d.data.y1 = d.value;
-            d.parent.data.y0 = 0;
-            d.parent.data.y1 = d.value;
-        }
-        else {
-            d.data.y0 = d.parent.data.y1;
-            d.data.y1 = d.data.y0 + d.value;
-            d.parent.data.y1 += d.value;
-        }
+        let scale = (0, d3_scale_1.scaleLinear)()
+            .domain([0, 99])
+            .range([0, Math.PI * 2])
+            .clamp(true);
+        if (!this._svg)
+            this._svg = (0, d3_selection_1.select)(this._tagname).append("svg");
+        this._svg.attr("width", this.sizestandard)
+            .attr("height", this.sizestandard)
+            .attr("viewBox", [0, 0, this.sizestandard, this.sizestandard]);
+        let backgroundArc = (0, d3_shape_1.arc)()
+            .startAngle(scale(0))
+            .endAngle(scale(99))
+            .innerRadius(this.sizestandard * 0.33)
+            .outerRadius(this.sizestandard * 0.45);
+        let mArc = (0, d3_shape_1.arc)()
+            .startAngle(scale(this.minvalue))
+            .innerRadius(this.sizestandard * 0.33)
+            .outerRadius(this.sizestandard * 0.45)
+            .cornerRadius(this.sizestandard * 0.05);
+        if (!this._newArcs)
+            this._newArcs = this._svg
+                .append("g")
+                .attr("class", "d3chart_percentageChart_arcs");
+        this._newArcs.attr("transform", `translate(${this.sizestandard / 2},${this.sizestandard / 2})`);
+        if (!this._background)
+            this._background = this._newArcs.append("path")
+                .attr("class", "d3chart_percentageChart_backgroundArc");
+        this._background
+            .attr("d", backgroundArc)
+            .attr("fill", this.color[0]);
+        if (!this._foreground)
+            this._foreground = this._newArcs.append("path")
+                .attr("class", "d3chart_percentageChart_arc");
+        let foregroundmotion = this._foreground
+            .datum({ endAngle: scale(this.inputvalue) })
+            .attr("d", mArc)
+            .attr("fill", this.color[1]);
+        foregroundmotion.transition().duration(1000).ease(d3_1.easeQuadOut)
+            .attrTween("d", (d) => {
+            let minterpolate = (0, d3_interpolate_1.interpolate)(scale(this.minvalue), scale(this.inputvalue));
+            return (t) => {
+                d.endAngle = minterpolate(t);
+                mArc.endAngle(d.endAngle);
+                return mArc();
+            };
+        });
+        if (!this._text1)
+            this._text1 = this._newArcs.append("text")
+                .attr("class", "d3chart_percentageChart_text1");
+        this._text1.text(this.LevelText)
+            .attr("y", `${-this.sizestandard * 0.075}px`)
+            .attr("font-size", this.sizestandard * 0.15)
+            .attr("font-family", "Freight")
+            .attr("text-anchor", "middle")
+            .attr("fill", this.color[2]);
+        if (!this._text2)
+            this._text2 = this._newArcs.append("text")
+                .attr("class", "d3chart_percentageChart_text2");
+        this._text2.text(this.numberText)
+            .attr("y", `${this.sizestandard * 0.13}px`)
+            .attr("font-size", this.sizestandard * this.numberTextRatio)
+            .attr("font-family", "Freight")
+            .attr("text-anchor", "middle")
+            .attr("font-weight", "bold")
+            .attr("fill", this.color[2]);
     }
-    else {
-        d.data.index = 0;
-        d.data.value = d.value;
-        d.data.y0 = 0;
-        d.data.y1 = d.data.value;
-    }
+}
+let draw = new chart("#d3Chart1", { inputvalue: 50, size: 400 });
+draw.update();
+draw.onClick((event, data) => {
+    console.log(event, data);
 });
-const margin = { top: 30, bottom: 100, right: 10, left: 30 };
-const height = 500;
-let width = 500;
-const duration = 750;
-const paddinginner = 0.2;
-const paddingouter = 0.2;
-const xRange = [margin.left, width - margin.right];
-const xDomain = (0, d3_1.range)(xmax());
-let xScale = (0, d3_1.scaleBand)().range(xRange).domain(xDomain).paddingInner(paddinginner).paddingOuter(paddingouter);
-let xAxis = (0, d3_1.axisBottom)(xScale).tickSizeOuter(0);
-const yRange = [height - margin.bottom, margin.top];
-let yDomain = [0, root.value];
-let yScale = (0, d3_1.scaleLinear)().domain(yDomain).range(yRange).nice();
-let yAxis = (0, d3_1.axisLeft)(yScale).ticks(width / 80, "s");
-const color = (0, d3_1.scaleSequential)(d3_1.interpolateBlues).domain([-10.5 * 2, 1.0 * 28]);
-function myzoom(svg) {
-    const extent = [[margin.left, margin.top], [width - margin.right, height - margin.top]];
-    const mZoom = (0, d3_1.zoom)()
-        .scaleExtent([1, 8])
-        .translateExtent(extent)
-        .extent(extent)
-        .on("zoom", myzoomed);
-    svg.call(mZoom);
-    function myzoomed(event) {
-        let xlabel = [];
-        xScale.range([margin.left, width - margin.right].map(d => event.transform.applyX(d)));
-        svg.select(".d3Chart_stats_enter")
-            .selectAll("g")
-            .attr("transform", (d) => {
-            const data = d;
-            xlabel.push(data.data.name);
-            return `translate(${xScale(xScale.domain()[data.data.index])},0)`;
-        })
-            .selectAll("rect")
-            .attr("width", xScale.bandwidth());
-        const y = svg.select(".d3Chart_stats_y-axis");
-        y.raise().call(yAxis)
-            .call(g => g.selection ? g.selection().select(".domain").remove() : g.select(".domain").remove());
-        const x = svg.select(".d3Chart_stats_x-axis");
-        x.call(xAxis)
-            .call(g => g.selectAll("text").text(null).data(xlabel).text(d => d));
-    }
-}
-function chart() {
-    const svg = (0, d3_1.selectAll)("#d3ChartStats")
-        .append("svg")
-        .attr("viewBox", [0, 0, width, height])
-        .call(myzoom);
-    svg.append("rect")
-        .attr("class", "d3Chart_stats_background")
-        .attr("fill-opacity", 0)
-        .attr("width", width)
-        .attr("height", height)
-        .attr("cursor", "pointer")
-        .on("click", (_, d) => up(svg, d));
-    svg.append("g")
-        .attr("class", "d3Chart_stats_x-axis")
-        .attr("transform", `translate (0, ${height - margin.bottom})`)
-        .call(xAxis)
-        .call(g => g.selectAll("g")
-        .selectAll("text")
-        .text(null)
-        .attr("text-anchor", "start")
-        .attr("alignment-baseline", "baseline"));
-    svg.append("g")
-        .attr("class", "d3Chart_stats_y-axis")
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(yAxis).raise()
-        .call(g => (g.selection ? g.selection() : g).select(".domain").remove());
-    down(svg, root);
-    return svg.node();
-}
-function down(svg, d) {
-    if (!d.children || (0, d3_1.active)(svg.node()))
-        return;
-    svg.select(".d3Chart_stats_background").datum(d);
-    const exit = svg.selectAll(".d3Chart_stats_enter")
-        .attr("class", "d3Chart_stats_exit");
-    exit.selectAll("g")
-        .attr("fill-opacity", p => p === d ? 0 : null);
-    exit.transition().duration(duration)
-        .attr("fill-opacity", 0)
-        .remove();
-    const move = onecolorBar(svg, d, ".d3Chart_stats_exit", d.data.index);
-    move.attr("fill-opacity", 1)
-        .transition().duration(duration)
-        .on("end", function (p) {
-        (0, d3_1.select)(this)
-            .attr("fill-opacity", 0);
-    })
-        .remove();
-    move.selectAll("rect")
-        .attr("fill-opacity", 1)
-        .transition().duration(duration)
-        .attr("transform", transforming("spread"));
-    const enter = fullcolorBar(svg, down, d, ".d3Chart_stats_exit");
-    const ymax = (0, d3_1.max)(d.children, d => d ? d.value : 0);
-    yScale.domain([0, ymax ? ymax : 0]);
-    const y = svg.select(".d3Chart_stats_y-axis");
-    y.transition().duration(duration).transition()
-        .call(yAxis)
-        .call(g => g.selection ? g.selection().select(".domain").remove() : g.select(".domain").remove());
-    svg.select(".d3Chart_stats_x-axis")
-        .selectAll("text")
-        .text(null)
-        .data((0, d3_1.map)(d.children, d => d.data.name))
-        .text(d => d)
-        .attr("opacity", 0)
-        .attr("transform", `rotate(60)`)
-        .transition().duration(duration).transition()
-        .attr("opacity", 1)
-        .attr("transform", `translate(12,1) rotate(60)`);
-    enter.transition().duration(duration).transition()
-        .on("start", function (p) { (0, d3_1.select)(this).attr("fill-opacity", 1); });
-    enter.selectAll("g")
-        .transition().duration(duration).transition()
-        .attr("transform", transforming("array"));
-    const rectsize = enter.selectAll("g")
-        .selectAll("rect");
-    rectsize.transition().duration(duration).transition()
-        .attr("y", (d, i) => {
-        const data = d;
-        return i === 0 ? yScale(data.data.value) : yScale(data.data.y1);
-    })
-        .attr("height", (d) => {
-        const data = d;
-        return yScale(0) - yScale(data.value);
-    });
-}
-function up(svg, d) {
-    if (!d.parent || !svg.selectAll(".d3Chart_stats_exit").empty())
-        return;
-    svg.select(".d3Chart_stats_background").datum(d.parent);
-    const idx = d.data.index;
-    const exit = svg.selectAll(".d3Chart_stats_enter")
-        .attr("class", "d3Chart_stats_exit");
-    const ymax = (0, d3_1.max)(d.parent.children, d => d ? d.value : 0);
-    yScale.domain([0, ymax ? ymax : 0]);
-    const y = svg.select(".d3Chart_stats_y-axis");
-    y.transition().duration(duration)
-        .call(yAxis)
-        .call(g => g.selection ? g.selection().select(".domain").remove() : g.select(".domain").remove());
-    exit.transition().duration(duration)
-        .on("end", function (p) { (0, d3_1.select)(this).remove(); })
-        .call(g => g.selectAll("g").attr("transform", transforming("up")))
-        .call(g => g.selectAll("g")
-        .selectAll('rect')
-        .attr("height", (d) => {
-        const data = d;
-        return yScale(0) - yScale(data.value);
-    })
-        .attr("y", (d, i) => {
-        const data = d;
-        return i === 0 ? yScale(data.data.value) : yScale(data.data.y1);
-    }));
-    svg.select(".d3Chart_stats_x-axis")
-        .selectAll("text")
-        .text(null)
-        .data((0, d3_1.map)(d.parent.children, d => d.data.name))
-        .text(d => d)
-        .attr("opacity", 0)
-        .attr("transform", `rotate(60)`)
-        .transition().duration(duration).transition()
-        .attr("opacity", 1)
-        .attr("transform", `translate(12,1) rotate(60)`);
-    const move = onecolorBar(svg, d, ".d3Chart_stats_exit");
-    move.selectAll("rect")
-        .attr("transform", transforming("spread"))
-        .transition().duration(duration).transition()
-        .attr("transform", (d) => {
-        const data = d;
-        return `translate(${xScale(xScale.domain()[idx])}, ${yScale(data.data.y1)})`;
-    })
-        .on("start", function (p) { (0, d3_1.select)(this).attr("fill-opacity", 1); });
-    move.transition().duration(duration).transition().on("end", function (p) { (0, d3_1.select)(this).remove(); });
-    const enter = fullcolorBar(svg, down, d.parent, ".d3Chart_stats_exit");
-    enter.selectAll("g")
-        .attr("fill-opacity", 0)
-        .attr("transform", transforming("array"))
-        .transition().duration(duration).transition()
-        .attr("fill-opacity", 1);
-}
-function fullcolorBar(svg, down, d, selector) {
-    const g = svg.insert("g", selector)
-        .attr("class", "d3Chart_stats_enter");
-    g.attr("fill-opacity", 0)
-        .selectAll("g")
-        .data(d.children)
-        .join("g")
-        .on("click", (_, d) => down(svg, d))
-        .attr("cursor", d => !d.children ? null : "pointer")
-        .attr("transform", (d, i) => `translate(${xScale(xScale.domain()[i])},${yScale(d.data.y0) - yScale(0)})`)
-        .selectAll("g")
-        .data(d => d.children ? d.children : d)
-        .join("rect")
-        .attr("class", (_, i) => `d3Chartstats_color_${i}`)
-        .attr("fill", (_, i) => color(i))
-        .attr("y", (d, i) => i === 0 ? yScale(d.data.value) : yScale(d.data.y1))
-        .attr("height", d => yScale(0) - yScale(d.value))
-        .attr("width", xScale.bandwidth());
-    return g;
-}
-function onecolorBar(svg, d, selector, idx = null) {
-    const g = svg.insert("g", selector)
-        .attr("class", "d3Chart_stats_move");
-    const bar = g.attr("fill-opacity", 0).selectAll("g")
-        .data(d.children)
-        .join("rect")
-        .attr("width", xScale.bandwidth())
-        .attr("height", d => yScale(0) - yScale(d.value))
-        .attr("fill", (_, i) => color(i));
-    if (idx == null) {
-        bar.attr("transform", d => `translate(${xScale(xScale.domain()[d.data.index])},${yScale(d.data.y1)})`);
-    }
-    else {
-        bar.attr("transform", d => `translate(${xScale(xScale.domain()[idx])},${yScale(d.data.y1)})`);
-    }
-    return g;
-}
-function transforming(type) {
-    return (d, i) => {
-        let t = "";
-        switch (type) {
-            case "array":
-                t = `translate(${xScale(xScale.domain()[i])}, 0)`;
-                break;
-            case "spread":
-                t = `translate(${xScale(xScale.domain()[i])}, ${yScale(d.data.y1)})`;
-                break;
-            default:
-                t = `translate(${xScale(xScale.domain()[i])}, ${yScale(d.data.y0) - yScale(0)})`;
-                break;
-        }
-        ;
-        return t;
-    };
-}
-function xmax() {
-    let max = 1;
-    root.each(d => d.children && (max = Math.max(max, d.children.length)));
-    return max;
-}
-chart();
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=d3Public.js.map
+//# sourceMappingURL=d3Percentage.js.map

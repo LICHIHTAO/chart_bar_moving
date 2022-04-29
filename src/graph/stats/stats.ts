@@ -10,8 +10,6 @@ import {scaleLinear, scaleBand, scaleSequential} from "d3-scale"
 import type {Axis} from "d3-axis"
 import {axisBottom, axisLeft } from "d3-axis"
 
-import {color} from "d3-color"
-
 import {range, max, map, ascending} from "d3-array"
 
 import { active } from "d3-transition"
@@ -78,7 +76,7 @@ class chart {
     private yScale:ScaleLinear<number, number, never>;
     private yAxis:Axis<NumberValue>;
 
-    private colorbar:ScaleSequential<string, never>;
+    private color:ScaleSequential<string, never>;
 
     constructor(){
 
@@ -107,7 +105,7 @@ class chart {
         this.yScale = scaleLinear().domain(this.yDomain).range(this.yRange);
         this.yAxis = axisLeft(this.yScale).ticks(this.width/80, "s");
     
-        this.colorbar = scaleSequential(interpolateBlues).domain([-10.5 * 2, 1.0 * 28]);
+        this.color = scaleSequential(interpolateBlues).domain([-10.5 * 2, 1.0 * 28]);
     }
 
     
@@ -324,7 +322,6 @@ class chart {
         enter.transition().duration(this.duration).transition()
             .on("start", function(p) {select(this).attr("fill-opacity", 1);});
 
-
         /**
          * 모션 2에서 칼라봉을 하단으로 이동
          */
@@ -346,8 +343,7 @@ class chart {
             .attr("height", (d)=>{
                 const data = d as HierarchyNode<HierarchyDatum>;
                 return this.yScale(0)-this.yScale(data.value as number)
-            });                     
-
+            });
     }
 
    
@@ -478,7 +474,7 @@ class chart {
                 .data(d=>d.children? d.children : d)
                     .join("rect")
                         .attr("class", (_,i)=>`d3Chartstats_color_${i}`)
-                        .attr("fill", (_,i)=>this.colorbar(i))
+                        .attr("fill", (_,i)=>this.color(i))
                         .attr("y", (d,i) => i===0? this.yScale(d.data.value as number): this.yScale(d.data.y1 as number))
                         .attr("height", d => this.yScale(0)-this.yScale(d.value as number))
                         .attr("width", this.xScale.bandwidth())
@@ -505,7 +501,7 @@ class chart {
             .join("rect")
                 .attr("width", this.xScale.bandwidth())
                 .attr("height", d=> this.yScale(0)-this.yScale(d.value as number))
-                .attr("fill", (_,i)=> this.colorbar(i));
+                .attr("fill", (_,i)=> this.color(i));
 
         if(idx == null){
             bar.attr("transform", d=>`translate(${this.xScale(this.xScale.domain()[d.data.index as number])},${this.yScale(d.data.y1 as number)})`);
@@ -611,7 +607,7 @@ class chart {
     /**
      * 데이터의 크기순으로 정렬한 데이터 (기본값)
      * @param data 원본 데이터 
-     * @returns 값을 내림차순으로 정렬한 hierarchy 데이터 반환
+     * @returns value 값(금액)을 내림차순으로 정렬한 hierarchy 데이터 반환
      */
     public inputData(data:HierarchyDatum): HierarchyNode<HierarchyDatum> {
         if (data == undefined || data == null){
