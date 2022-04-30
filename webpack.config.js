@@ -40,7 +40,7 @@ module.exports = {
     // jsPublic: "./src/jsIndex.ts",
     // cssPublic: "./src/cssIndex.ts",
     d3Public:"./src/d3Index.ts",
-    d3Classtest:"./src/d3index_class.ts",
+    d3Classtest:"./src/graph/stats/stats.ts",
     d3Distribution:"./src/graph/distribution/distribution.ts",
     d3Percentage:"./src/graph/percentage/percentage.ts"
   },

@@ -662,4 +662,4 @@ class chart {
     }
 }
 const charttest = new chart();
-charttest.select("#d3ChartStats_class");
+charttest.select("#d3Chart");

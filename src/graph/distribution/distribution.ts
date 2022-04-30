@@ -119,6 +119,8 @@ class chart {
     //  (game)[[10,15,data{}],[15,25,data{}],[20,21,data{}],[23,32,data{}]...],
     //  (engineer)[[15,16,data{}],[25,31,data{}],[21,32,data{}],[32,35,data{}]...]]
     public inputData(data:StackDatum): Stack<any, StackDatum, string>{
+
+
         let arr:string[] = []
         map(data, d=>arr.push(d.age))
         let ageslist:string[] = [...new Set(arr)];
@@ -126,47 +128,52 @@ class chart {
         arr = []
         map(data, d=>arr.push(d.submajor))
         let majorlist:string[] = [...new Set(arr)];
+
+
+        let stack1=stack().keys(ageslist).order(stackOrderNone)
+        .offset(stackOffsetNone)(data)
+
+        console.log(stack1)
+
         console.log(majorlist)
         console.log(ageslist)
 
-        let maleData: number[]
-        let femaleData: number[]
-        for (let i in majorlist){ //3번
-            let _list = []
+        // let maleData: number[]
+        // let femaleData: number[]
+        // for (let i in majorlist){ //3번
+        //     let _list = []
 
-            for (let j of data){ // 50번
-                let _value:number
-                let list_2 = []
-                let _data = j
-                list_2.data = _data
+        //     for (let j of data){ // 50번
+        //         let _value:number
+        //         let list_2 = []
+        //         let _data = j
+        //         list_2.data = _data
 
-                if (j.sex == "Male"){
-                    if (j.submajor == majorlist[i]){
-                        if (i == "0"){
-                            list_2.push(0)
-                        }
-                        list_2.push(j.value)
-                        console.log(list_2)
+        //         if (j.sex == "Male"){
+        //             if (j.submajor == majorlist[i]){
+        //                 if (i == "0"){
+        //                     list_2.push(0)
+        //                 }
+        //                 list_2.push(j.value)
+        //                 console.log(list_2)
     
                      
     
     
-                    } else if (data.age == j){
+        //             } else if (data.age == j){
 
-                    }
+        //             }
 
-                } else{
+        //         } else{
+        //     }}
 
-        }
+        // }
     }
         
-        return 
 
-    }
+
 
 }
 
 let chart1 = new chart()
 chart1.inputData(data)
-
-

@@ -12,7 +12,7 @@ import 'd3-transition';
 import {arc} from "d3-shape";
 
 import { interpolate } from "d3-interpolate";
-import { easeQuadOut, } from "d3";
+import { easeQuadOut, } from "d3-ease";
 
 
 /**
@@ -22,7 +22,7 @@ import { easeQuadOut, } from "d3";
  * @version type/D3 7.1.0 
  * 
  * 원형 게이지 차트 
- * 중간에 level이 있고 주위 게이지를 통해 얼마나 진행했는지 확인 할 수 있음. 
+ * 중간에 text가 있고 주위 게이지를 통해 얼마나 진행했는지 확인 할 수 있음. 
  * chart(ID or class, data{}) - {inputvalue : 0~99 값(필수), size : 차트사이즈(필수) ...}
  */
 class chart {
@@ -152,7 +152,7 @@ class chart {
         textRatio?:number,
         color?:[string, string, string]}) {
         /**
-         * data 값이 존재하면 값을 덮어씌워서 this에 저장
+         * data 값이 존재하면 기존값에 덮어씌워서 this에 저장
          */
         if(data){
             if (data.inputvalue) this.inputvalue = data.inputvalue;
@@ -227,7 +227,7 @@ class chart {
             .attr("class","d3chart_percentageChart_arc"); 
         
         let foregroundmotion = this._foreground
-            .datum({endAngle:scale(this.inputvalue)})
+            .datum({endAngle:scale(this.inputvalue)}) //endAngle은 변수화 하여 datum에 저장
             /**
              * mArc는 리턴값이 존재함(M08...)따라서 any타입으로 정의함 */   
             .attr("d", <any>mArc)            
