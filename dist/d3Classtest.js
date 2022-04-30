@@ -7,10 +7,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/data.ts":
-/*!*********************!*\
-  !*** ./src/data.ts ***!
-  \*********************/
+/***/ "./src/graph/stats/data.ts":
+/*!*********************************!*\
+  !*** ./src/graph/stats/data.ts ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -15851,9 +15851,9 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!******************************!*\
-  !*** ./src/d3index_class.ts ***!
-  \******************************/
+/*!**********************************!*\
+  !*** ./src/graph/stats/stats.ts ***!
+  \**********************************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const d3_hierarchy_1 = __webpack_require__(/*! d3-hierarchy */ "./node_modules/d3-hierarchy/src/index.js");
@@ -15864,7 +15864,7 @@ const d3_array_1 = __webpack_require__(/*! d3-array */ "./node_modules/d3-array/
 const d3_transition_1 = __webpack_require__(/*! d3-transition */ "./node_modules/d3-transition/src/index.js");
 const d3_zoom_1 = __webpack_require__(/*! d3-zoom */ "./node_modules/d3-zoom/src/index.js");
 const d3_scale_chromatic_1 = __webpack_require__(/*! d3-scale-chromatic */ "./node_modules/d3-scale-chromatic/src/index.js");
-const data_1 = __webpack_require__(/*! ./data */ "./src/data.ts");
+const data_1 = __webpack_require__(/*! ./data */ "./src/graph/stats/data.ts");
 class chart {
     constructor() {
         this._originaldata = data_1.data;
@@ -15884,7 +15884,7 @@ class chart {
         this.yDomain = [0, this._data.value];
         this.yScale = (0, d3_scale_1.scaleLinear)().domain(this.yDomain).range(this.yRange);
         this.yAxis = (0, d3_axis_1.axisLeft)(this.yScale).ticks(this.width / 80, "s");
-        this.colorbar = (0, d3_scale_1.scaleSequential)(d3_scale_chromatic_1.interpolateBlues).domain([-10.5 * 2, 1.0 * 28]);
+        this.color = (0, d3_scale_1.scaleSequential)(d3_scale_chromatic_1.interpolateBlues).domain([-10.5 * 2, 1.0 * 28]);
     }
     select(tagName) {
         this._tagName = tagName;
@@ -16072,7 +16072,7 @@ class chart {
             .data(d => d.children ? d.children : d)
             .join("rect")
             .attr("class", (_, i) => `d3Chartstats_color_${i}`)
-            .attr("fill", (_, i) => this.colorbar(i))
+            .attr("fill", (_, i) => this.color(i))
             .attr("y", (d, i) => i === 0 ? this.yScale(d.data.value) : this.yScale(d.data.y1))
             .attr("height", d => this.yScale(0) - this.yScale(d.value))
             .attr("width", this.xScale.bandwidth())
@@ -16088,7 +16088,7 @@ class chart {
             .join("rect")
             .attr("width", this.xScale.bandwidth())
             .attr("height", d => this.yScale(0) - this.yScale(d.value))
-            .attr("fill", (_, i) => this.colorbar(i));
+            .attr("fill", (_, i) => this.color(i));
         if (idx == null) {
             bar.attr("transform", d => `translate(${this.xScale(this.xScale.domain()[d.data.index])},${this.yScale(d.data.y1)})`);
         }

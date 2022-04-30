@@ -120,23 +120,13 @@ class chart {
     //  (engineer)[[15,16,data{}],[25,31,data{}],[21,32,data{}],[32,35,data{}]...]]
     public inputData(data:StackDatum): Stack<any, StackDatum, string>{
 
+        let ageslist:string[] =  ["<5","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","≥85",]
 
-        let arr:string[] = []
-        map(data, d=>arr.push(d.age))
-        let ageslist:string[] = [...new Set(arr)];
+        let malestack=stack().keys(ageslist).order(stackOrderNone)
+        .offset(stackOffsetNone)(data).filter(d=>console.log(d))
 
-        arr = []
-        map(data, d=>arr.push(d.submajor))
-        let majorlist:string[] = [...new Set(arr)];
+        // console.log(malestack)
 
-
-        let stack1=stack().keys(ageslist).order(stackOrderNone)
-        .offset(stackOffsetNone)(data)
-
-        console.log(stack1)
-
-        console.log(majorlist)
-        console.log(ageslist)
 
         // let maleData: number[]
         // let femaleData: number[]
