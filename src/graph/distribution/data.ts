@@ -3,44 +3,63 @@ export interface margintype {
     bottom: number;
     left: number;
     right:number;
+    middle:number;
 }
 
-export interface StackDatum<T>{
-    "major": string;
-    "submajor": string;
-    "sex":string;
-    "age":string;
-    "value":number
-}
+// export interface StackDatum{
+//     "major": string;
+//     "submajor": string;
+//     "sex":string;
+//     "age":string;
+//     "value":number;
+//     "<5":number;
+//     "5-9":number;
+//     "10-14":number;
+//     "15-19":number;
+//     "20-24":number;
+//     "25-29":number;
+//     "30-34":number;
+//     "35-39":number;
+//     "40-44":number;
+//     "45-49":number;
+//     "50-54":number;
+//     "55-59":number;
+//     "60-64":number;
+//     "65-69":number;
+//     "70-74":number;
+//     "75-79":number;
+//     "80-84":number;
+//     "≥85":number;
+// }
 
 
-export let data1: StackDatum[] =[
-    {"major":"Engineering", "submajor":"Math", "sex":"Male", "<5":3391904, "5-9":3490049, "10-14":3520624,"15-19":3647541, 
-    "20-24":3858804, "25-29":3663199, "30-34":3541930, "35-39":3299856,"40-44":3443662, "45-49":3523995, "50-54":3683803, 
-    "55-59":3391215, "60-64":2941617, "65-69":2292090, "70-74":1622504, "75-79":1138811, "80-84":792897, "≥85":666924},
+// export let data1: StackDatum[] =[
+//     {"major":"Engineering", "submajor":"Math", "sex":"Male", "<5":3391904, "5-9":3490049, "10-14":3520624,"15-19":3647541, 
+//     "20-24":3858804, "25-29":3663199, "30-34":3541930, "35-39":3299856,"40-44":3443662, "45-49":3523995, "50-54":3683803, 
+//     "55-59":3391215, "60-64":2941617, "65-69":2292090, "70-74":1622504, "75-79":1138811, "80-84":792897, "≥85":666924},
 
-    {"major":"Engineering", "submajor":"Math", "sex":"Female", "<5":3245435, "5-9":3343945,"10-14":3372638,
-    "15-19":3470619, "20-24":3675940, "25-29":3569471, "30-34":3519283, "35-39":3318738, "40-44":3488381, 
-    "45-49":3599461, "50-54":3824694, "55-59":3609434, "60-64":3196943, "65-69":2557058, "70-74":1906736, "75-79":1437899, "80-84":1144246, "≥85":1312660},
+//     {"major":"Engineering", "submajor":"Math", "sex":"Female", "<5":3245435, "5-9":3343945,"10-14":3372638,
+//     "15-19":3470619, "20-24":3675940, "25-29":3569471, "30-34":3519283, "35-39":3318738, "40-44":3488381, 
+//     "45-49":3599461, "50-54":3824694, "55-59":3609434, "60-64":3196943, "65-69":2557058, "70-74":1906736, "75-79":1437899, "80-84":1144246, "≥85":1312660},
 
-    {"major":"Engineering", "submajor":"Game", "sex":"Male", "<5":3391904, "5-9":3490049, "10-14":3520624,"15-19":3647541, 
-    "20-24":3858804, "25-29":3663199, "30-34":3541930, "35-39":3299856,"40-44":3443662, "45-49":3523995, "50-54":3683803, 
-    "55-59":3391215, "60-64":2941617, "65-69":2292090, "70-74":1622504, "75-79":1138811, "80-84":792897, "≥85":666924},
+//     {"major":"Engineering", "submajor":"Game", "sex":"Male", "<5":3391904, "5-9":3490049, "10-14":3520624,"15-19":3647541, 
+//     "20-24":3858804, "25-29":3663199, "30-34":3541930, "35-39":3299856,"40-44":3443662, "45-49":3523995, "50-54":3683803, 
+//     "55-59":3391215, "60-64":2941617, "65-69":2292090, "70-74":1622504, "75-79":1138811, "80-84":792897, "≥85":666924},
 
 
-    {"major":"Engineering", "submajor":"Game", "sex":"Female", "<5":3245435, "5-9":3343945,"10-14":3372638,
-    "15-19":3470619, "20-24":3675940, "25-29":3569471, "30-34":3519283, "35-39":3318738, "40-44":3488381, 
-    "45-49":3599461, "50-54":3824694, "55-59":3609434, "60-64":3196943, "65-69":2557058, "70-74":1906736, "75-79":1437899, "80-84":1144246, "≥85":1312660},
+//     {"major":"Engineering", "submajor":"Game", "sex":"Female", "<5":3245435, "5-9":3343945,"10-14":3372638,
+//     "15-19":3470619, "20-24":3675940, "25-29":3569471, "30-34":3519283, "35-39":3318738, "40-44":3488381, 
+//     "45-49":3599461, "50-54":3824694, "55-59":3609434, "60-64":3196943, "65-69":2557058, "70-74":1906736, "75-79":1437899, "80-84":1144246, "≥85":1312660},
 
-    {"major":"Engineering", "submajor":"Engineer", "sex":"Male", "<5":3391904, "5-9":3490049, "10-14":3520624,"15-19":3647541, 
-    "20-24":3858804, "25-29":3663199, "30-34":3541930, "35-39":3299856,"40-44":3443662, "45-49":3523995, "50-54":3683803, 
-    "55-59":3391215, "60-64":2941617, "65-69":2292090, "70-74":1622504, "75-79":1138811, "80-84":792897, "≥85":666924},
+//     {"major":"Engineering", "submajor":"Engineer", "sex":"Male", "<5":3391904, "5-9":3490049, "10-14":3520624,"15-19":3647541, 
+//     "20-24":3858804, "25-29":3663199, "30-34":3541930, "35-39":3299856,"40-44":3443662, "45-49":3523995, "50-54":3683803, 
+//     "55-59":3391215, "60-64":2941617, "65-69":2292090, "70-74":1622504, "75-79":1138811, "80-84":792897, "≥85":666924},
 
-    {"major":"Engineering", "submajor":"Engineer", "sex":"Female", "<5":3245435, "5-9":3343945,"10-14":3372638,
-    "15-19":3470619, "20-24":3675940, "25-29":3569471, "30-34":3519283, "35-39":3318738, "40-44":3488381, 
-    "45-49":3599461, "50-54":3824694, "55-59":3609434, "60-64":3196943, "65-69":2557058, "70-74":1906736, "75-79":1437899, "80-84":1144246, "≥85":1312660}
+//     {"major":"Engineering", "submajor":"Engineer", "sex":"Female", "<5":3245435, "5-9":3343945,"10-14":3372638,
+//     "15-19":3470619, "20-24":3675940, "25-29":3569471, "30-34":3519283, "35-39":3318738, "40-44":3488381, 
+//     "45-49":3599461, "50-54":3824694, "55-59":3609434, "60-64":3196943, "65-69":2557058, "70-74":1906736, "75-79":1437899, "80-84":1144246, "≥85":1312660}
   
-]
+// ]
 
 
 // export let data1: StackDatum[] =[
@@ -154,35 +173,914 @@ export let data1: StackDatum[] =[
 //     {"major":"Engineering", "submajor":"Engineer", "sex":"Female", "age":"≥85","value":1312660}
 // ]
 
-// export interface HierarchyDatum {
-//     name: string;
-//     value?: number;
-//     index?: number;
-//     y0?: number;
-//     y1?: number;
-//     children?: Iterable<HierarchyDatum>;
+export interface HierarchyDatum {
+    name: string;
+    value?: number;
+    index?: number;
+    x0?: number;
+    x1?: number;
+    sex?:string;
+    children?: Array<HierarchyDatum>;
+}
+
+
+export interface majortype {
+    "<5": number;
+    "5-9": number;
+    "10-14": number;
+    "15-19": number;
+    "20-24": number;
+    "25-29": number;
+    "30-34": number;
+    "35-39": number;
+    "40-44": number;
+    "45-49": number;
+    "50-54": number;
+    "55-59": number;
+    "60-64": number;
+    "65-69": number;
+    "70-74": number;
+    "75-79": number;
+    "80-84": number;
+    "≥85": number;
+}
+
+export let data:HierarchyDatum [] = [
+    {
+        "name":"Engineering",
+        "children":[{
+            "name":"Female",
+            "children":[{
+                "name":"<5",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+            ]},
+            {
+                "name":"5-9",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"10-14",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"15-19",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"20-24",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"25-29",
+                "children":[
+                    {"name":"Math", "value":3000},
+                    {"name":"Game", "value":13123},
+                    {"name":"Engineer", "value":32435}
+
+                ]},
+            {
+                "name":"30-34",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"35-39",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"40-44",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"45-49",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"50-54",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"55-59",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"60-64",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"65-69",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"70-74",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"75-79",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"80-84",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"≥85",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]}
+            ]},
+            {
+            "name":"Male",
+            "children":[{
+                "name":"<5",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":30000},
+                    {"name":"Engineer", "value":3245435}
+            ]},
+            {
+                "name":"5-9",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"10-14",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"15-19",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"20-24",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"25-29",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"30-34",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"35-39",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"40-44",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"45-49",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"50-54",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"55-59",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"60-64",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"65-69",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"70-74",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"75-79",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"80-84",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]},
+            {
+                "name":"≥85",
+                "children":[
+                    {"name":"Math", "value":3245435},
+                    {"name":"Game", "value":3245435},
+                    {"name":"Engineer", "value":3245435}
+
+                ]}
+            ]}
+    ]},
+
+    {
+        "name":"National seience",
+        "children":[{
+            "name":"Female",
+            "children":[{
+                "name":"<5",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"5-9",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"10-14",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"15-19",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"20-24",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"25-29",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"30-34",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"35-39",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"40-44",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"45-49",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"50-54",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"55-59",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"60-64",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"65-69",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"70-74",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"75-79",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"80-84",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"≥85",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]}
+
+                ]}, 
+            {
+            "name":"Male",
+            "children":[{
+                "name":"<5",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"5-9",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"10-14",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"15-19",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"20-24",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"25-29",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"30-34",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"35-39",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"40-44",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"45-49",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"50-54",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"55-59",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"60-64",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"65-69",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"70-74",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"75-79",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"80-84",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]},
+                {
+                "name":"≥85",
+                "children":[
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
+                ]}
+
+            ]}
+    ]}
+]
+
+
+// export let data:HierarchyDatum = {
+//     "name":"Engineering",
+//     "children":[
+//         {
+//         "name":"<5",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"5-9",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"10-14",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"15-19",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"20-24",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"25-29",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"30-34",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"35-39",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"40-44",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//         {
+//         "name":"45-49",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//               {
+//         "name":"50-54",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+//         "name":"55-59",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+        
+//         "name":"60-64",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+//         "name":"65-69",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+//         "name":"70-74",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+//         "name":"75-79",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+//         "name":"80-84",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]},
+//       {
+//         "name":"≥85",
+//         "children":[{
+//             "name":"Male",
+//             "children":[
+//                 {"name":"Math", "value":3391904},
+//                 {"name":"Game", "value":3391904},
+//                 {"name":"Engineer", "value":3391904}
+//             ]},
+//             {
+//             "name":"Female",
+//             "children":[
+//                 {"name":"Math", "value":3245435},
+//                 {"name":"Game", "value":3245435},
+//                 {"name":"Engineer", "value":3245435}
+//             ]}
+//         ]}
+//     ]
 // }
 
-// export interface majortype {
-//     "<5": number;
-//     "5-9": number;
-//     "10-14": number;
-//     "15-19": number;
-//     "20-24": number;
-//     "25-29": number;
-//     "30-34": number;
-//     "35-39": number;
-//     "40-44": number;
-//     "45-49": number;
-//     "50-54": number;
-//     "55-59": number;
-//     "60-64": number;
-//     "65-69": number;
-//     "70-74": number;
-//     "75-79": number;
-//     "80-84": number;
-//     "≥85": number;
-// }
 
 // export let data:HierarchyDatum = {
 //     "name":"Engineering",

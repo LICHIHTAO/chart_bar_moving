@@ -615,7 +615,7 @@ class chart {
         }
         this._originaldata = data
         const data1 = hierarchy(data)
-            .sum((d)=> d.value as number)
+            .sum((d)=>  d.value as number)
             .sort((a, b) => {
                 if(a.value == undefined || b.value == undefined){
                     return 0;
