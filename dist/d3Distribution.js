@@ -24,17 +24,17 @@ exports.data = [
                 "children": [{
                         "name": "<5",
                         "children": [
-                            { "name": "Math", "value": 3245435 },
-                            { "name": "Game", "value": 3245435 },
-                            { "name": "Engineer", "value": 3245435 }
+                            { "name": "Math", "value": 3391904 },
+                            { "name": "Game", "value": 3391904 },
+                            { "name": "Engineer", "value": 3391904 }
                         ]
                     },
                     {
                         "name": "5-9",
                         "children": [
-                            { "name": "Math", "value": 3245435 },
-                            { "name": "Game", "value": 3245435 },
-                            { "name": "Engineer", "value": 3245435 }
+                            { "name": "Math", "value": 3490049 },
+                            { "name": "Game", "value": 3490049 },
+                            { "name": "Engineer", "value": 3490049 }
                         ]
                     },
                     {
@@ -64,9 +64,9 @@ exports.data = [
                     {
                         "name": "25-29",
                         "children": [
-                            { "name": "Math", "value": 3000 },
-                            { "name": "Game", "value": 13123 },
-                            { "name": "Engineer", "value": 32435 }
+                            { "name": "Math", "value": 3858804 },
+                            { "name": "Game", "value": 3858804 },
+                            { "name": "Engineer", "value": 3858804 }
                         ]
                     },
                     {
@@ -13671,81 +13671,76 @@ var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const d3_hierarchy_1 = __webpack_require__(/*! d3-hierarchy */ "./node_modules/d3-hierarchy/src/index.js");
-const d3_selection_1 = __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/index.js");
 const d3_scale_1 = __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/index.js");
 const d3_axis_1 = __webpack_require__(/*! d3-axis */ "./node_modules/d3-axis/src/index.js");
-const data_1 = __webpack_require__(/*! ./data */ "./src/graph/distribution/data.ts");
+const d3_selection_1 = __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/index.js");
 const d3_array_1 = __webpack_require__(/*! d3-array */ "./node_modules/d3-array/src/index.js");
 const d3_scale_chromatic_1 = __webpack_require__(/*! d3-scale-chromatic */ "./node_modules/d3-scale-chromatic/src/index.js");
+const data_1 = __webpack_require__(/*! ./data */ "./src/graph/distribution/data.ts");
 class chart {
-    constructor(name, data, major) {
+    constructor(tagname, data, major) {
         this.majorkey = major ? major : "Engineering";
         this.xLabel = `← Male · ${this.majorkey} · Female →`;
-        this._tagName = name;
-        this._data = this.inputData(data_1.data);
+        this._tagName = tagname;
+        this._data = this.inputData(data);
         this.height = 500;
         this.width = 500;
         this.margin = { top: 30, bottom: 50, right: 20, left: 20, middle: 20 };
-        this.paddinginner = 0.2;
-        this.paddingouter = 0.2;
         this.submajordatas = [];
         this.color = (0, d3_scale_1.scaleOrdinal)();
         this.maxValue = (0, d3_array_1.max)((0, d3_array_1.map)(this._data[this.majorkey], s => (0, d3_array_1.max)((0, d3_array_1.map)(s.data, d => d.x1))));
         this.rxRange = [this.margin.left, this.width / 2 - this.margin.right];
         this.lxRange = [this.width / 2 - this.margin.right, this.margin.left];
         this.xDomain = [0, this.maxValue];
-        this.xScale = (0, d3_scale_1.scaleLinear)().domain([0, this.maxValue]).range([0, (this.width / 2 - this.margin.middle)]).nice();
-        this.rxScale = (0, d3_scale_1.scaleLinear)().domain(this.xDomain).range(this.rxRange);
-        this.lxScale = (0, d3_scale_1.scaleLinear)().domain(this.xDomain).range(this.lxRange);
-        this.rxAxis = (0, d3_axis_1.axisBottom)(this.rxScale).ticks(this.width / 80, "s");
-        this.lxAxis = (0, d3_axis_1.axisBottom)(this.lxScale).ticks(this.width / 80, "s");
+        this.xScale = (0, d3_scale_1.scaleLinear)().domain(this.xDomain).range([0, (this.width / 2 - this.margin.middle - this.margin.right)]).nice();
+        this.rxScale = (0, d3_scale_1.scaleLinear)().domain(this.xDomain).range(this.rxRange).nice();
+        this.lxScale = (0, d3_scale_1.scaleLinear)().domain(this.xDomain).range(this.lxRange).nice();
+        this.rxAxis = (0, d3_axis_1.axisBottom)(this.rxScale).ticks(this.width / 80, "s").tickSizeOuter(0);
+        this.lxAxis = (0, d3_axis_1.axisBottom)(this.lxScale).ticks(this.width / 80, "s").tickSizeOuter(0);
         this.yRange = [this.margin.top, this.height - this.margin.bottom];
         this.yDomain = ["<5", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "≥85"];
-        this.yScale = (0, d3_scale_1.scaleBand)().domain(this.yDomain).range(this.yRange).paddingInner(this.paddinginner).paddingOuter(this.paddingouter);
-        this.ryAxis = (0, d3_axis_1.axisRight)(this.yScale).tickSize(4);
-        this.lyAxis = (0, d3_axis_1.axisLeft)(this.yScale).tickSize(4);
+        this.yScale = (0, d3_scale_1.scaleBand)().domain(this.yDomain).range(this.yRange).paddingInner(0.2).paddingOuter(0.2);
+        this.ryAxis = (0, d3_axis_1.axisRight)(this.yScale).tickSize(4).tickSizeOuter(0);
+        this.lyAxis = (0, d3_axis_1.axisLeft)(this.yScale).tickSize(4).tickSizeOuter(0);
     }
     update() {
         const Fdata = (0, d3_array_1.filter)(this._data[this.majorkey], d => d.name == "Female");
         const Mdata = (0, d3_array_1.filter)(this._data[this.majorkey], d => d.name == "Male");
-        this.color = (0, d3_scale_1.scaleOrdinal)(this.submajordatas, d3_scale_chromatic_1.schemeTableau10);
-        console.log(this.color("Math"));
+        this.color = this.color.domain(this.submajordatas).range(d3_scale_chromatic_1.schemeTableau10);
         const svg = (0, d3_selection_1.select)(this._tagName)
             .append("svg")
             .attr("height", this.height)
             .attr("width", this.width)
             .attr("viewBox", [0, 0, this.width, this.height])
             .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
-        let g = svg.append('g')
-            .attr('class', 'inner-region');
-        g.append('g')
-            .attr('class', 'axis y right')
-            .attr('transform', `translate(${this.width / 2 + this.margin.middle}, 0)`)
-            .call(this.lyAxis)
-            .selectAll('text')
-            .attr('dx', `-${this.margin.middle * 0.65}`)
-            .style('text-anchor', 'middle');
-        g.append('g')
-            .attr('class', 'axis x right')
-            .attr('transform', `translate(${this.width / 2},${this.height - this.margin.bottom})`)
-            .call(this.rxAxis);
-        g.append('g')
-            .attr('class', 'axis y left')
-            .attr('transform', `translate(${this.width / 2 - this.margin.left}, 0)`)
+        svg.append("g")
+            .attr("class", "d3chart_distribute_lxAxis")
+            .attr("transform", `translate(0, ${this.height - this.margin.bottom})`)
+            .call(this.lxAxis);
+        svg.append("g")
+            .attr("class", "d3chart_distribute_ryAxis")
+            .attr("transform", `translate(${this.width / 2 - this.margin.left}, 0)`)
             .call(this.ryAxis)
             .call(g => g.selectAll(".tick text").remove());
-        g.append('g')
-            .attr('class', 'axis x left')
-            .attr('transform', `translate(0, ${this.height - this.margin.bottom})`)
-            .call(this.lxAxis);
-        g.append("text")
+        svg.append("g")
+            .attr("class", "d3chart_distribute_lyAxis")
+            .attr("transform", `translate(${this.width / 2 + this.margin.middle}, 0)`)
+            .call(this.lyAxis)
+            .selectAll("text")
+            .attr("dx", `-${this.margin.middle * 0.65}`)
+            .style("text-anchor", "middle");
+        svg.append("g")
+            .attr("class", "d3chart_distribute_rxAxis")
+            .attr("transform", `translate(${this.width / 2},${this.height - this.margin.bottom})`)
+            .call(this.rxAxis);
+        svg.append("text")
             .attr("transform", `translate(${this.width / 2},${this.height - 10})`)
             .attr("text-anchor", "middle")
             .text(this.xLabel);
-        let lBarGroup = g.append('g').data(Fdata)
-            .attr('transform', `translate(${this.width / 2 - this.margin.left}, 0)` + 'scale(-1,1)');
-        let rBarGroup = g.append('g').data(Mdata)
-            .attr('transform', `translate(${this.width / 2 + this.margin.middle}, 0)`);
+        let lBarGroup = svg.append("g").data(Fdata)
+            .attr("transform", `translate(${this.width / 2 - this.margin.left}, 0)` + "scale(-1,1)");
+        let rBarGroup = svg.append("g").data(Mdata)
+            .attr("transform", `translate(${this.width / 2 + this.margin.middle}, 0)`);
         lBarGroup.selectAll("g")
             .data(d => d.data)
             .join("rect")

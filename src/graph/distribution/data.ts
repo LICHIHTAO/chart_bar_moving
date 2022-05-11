@@ -180,6 +180,7 @@ export interface HierarchyDatum {
     x0?: number;
     x1?: number;
     sex?:string;
+    data?: Iterable<HierarchyDatum>;
     children?: Array<HierarchyDatum>;
 }
 
@@ -213,16 +214,16 @@ export let data:HierarchyDatum [] = [
             "children":[{
                 "name":"<5",
                 "children":[
-                    {"name":"Math", "value":3245435},
-                    {"name":"Game", "value":3245435},
-                    {"name":"Engineer", "value":3245435}
+                    {"name":"Math", "value":3391904},
+                    {"name":"Game", "value":3391904},
+                    {"name":"Engineer", "value":3391904}
             ]},
             {
                 "name":"5-9",
                 "children":[
-                    {"name":"Math", "value":3245435},
-                    {"name":"Game", "value":3245435},
-                    {"name":"Engineer", "value":3245435}
+                    {"name":"Math", "value":3490049},
+                    {"name":"Game", "value":3490049},
+                    {"name":"Engineer", "value":3490049}
 
                 ]},
             {
@@ -252,9 +253,9 @@ export let data:HierarchyDatum [] = [
             {
                 "name":"25-29",
                 "children":[
-                    {"name":"Math", "value":3000},
-                    {"name":"Game", "value":13123},
-                    {"name":"Engineer", "value":32435}
+                    {"name":"Math", "value":3858804},
+                    {"name":"Game", "value":3858804},
+                    {"name":"Engineer", "value":3858804}
 
                 ]},
             {

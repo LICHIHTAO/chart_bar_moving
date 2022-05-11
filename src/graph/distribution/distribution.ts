@@ -1,58 +1,34 @@
 import type {HierarchyNode} from "d3-hierarchy"
 import {hierarchy} from "d3-hierarchy"
 
-
-
-
-import type {Selection, } from "d3-selection"
-import {select, selectAll, local} from "d3-selection"
-
 import type{ScaleLinear, ScaleBand,ScaleOrdinal, NumberValue} from"d3-scale"
 import {scaleLinear, scaleBand, scaleOrdinal} from "d3-scale"
 
 import type {Axis} from "d3-axis"
 import {axisBottom, axisLeft,axisRight } from "d3-axis"
 
+import {select} from "d3-selection"
 
-import { csvParse, autoType } from "d3-dsv"
-
-import { active } from "d3-transition"
-
-import {zoom} from "d3-zoom"
-
-import {interpolateBlues}from "d3-scale-chromatic"
-
-import {data as localdata} from "./data"
-import type {margintype, HierarchyDatum} from "./data"
-
-import type {Stack} from "d3-shape"
-import {stack,stackOrderNone,stackOffsetNone,stackOrderReverse} from "d3-shape"
-
-import {range, max,min, map, ascending, rollup, filter, sort} from "d3-array"
+import {max, map, filter, sort} from "d3-array"
 
 import {schemeTableau10, } from "d3-scale-chromatic"
 
+import type {margintype, HierarchyDatum} from "./data"
+import {data as localdata} from "./data"
 
 
+/**
+ * 전공별 남여 인구 분표 차트. 왼쪽<=:남성, 오른쪽=>:여성 
+ * 새부전공은 다른 색상으로 표기됨.
+ */
 class chart {
-    /**
-     * 원본 input 데이터 저장용도
-     */
-    /**
-     * 전달받은 데이터 저장용
-     */
 
-    /**
-     * html에 위치할 태크 값 전달 받는 용
-     */
     private _tagName:string;
     private _data:{[key:string]:any};
 
     private height:number;
     private width:number;
     private margin: margintype;
-    private paddinginner: number;
-    private paddingouter: number;
 
     private rxRange:[number, number];
     private lxRange:[number, number];
@@ -80,51 +56,71 @@ class chart {
     private submajordatas:string [];
     private maxValue:number;
 
-
-    constructor(name:string, data:HierarchyDatum [], major?:string){
+/**
+ * 초기값으로 위치할 tag(ID,class)과 데이터를 넣어준다.
+ * @param tagname ID, class 입력
+ * @param data 데이터 입력
+ * @param major 보여질 전공 이름 입력 (기본값 Engineering)
+ */
+    constructor(tagname:string, data:HierarchyDatum [], major?:string){
+        /**
+         * @argument majorkey major 입력값이 없으면 "Engineering" 으로 저장 ("Engineering"는 데이터에 key 데이터로 있어야 함)
+         */
         this.majorkey = major ? major : "Engineering"
+        /**
+         *  @argument xLabel 중앙 하단에 표시됨. major를 설정하면 중앙 글기가 바뀜
+         */
         this.xLabel = `← Male · ${this.majorkey} · Female →`;
-        this._tagName= name
-        this._data = this.inputData(localdata)
+
+        this._tagName= tagname
+        this._data = this.inputData(data)
 
         this.height= 500;
         this.width= 500;
         this.margin = {top: 30, bottom: 50, right: 20, left:20, middle: 20};
-        this.paddinginner = 0.2;
-        this.paddingouter = 0.2;
+        /**
+         * @argument submajordatas 전공에서 세부전공빼서 담는 list
+         */
         this.submajordatas = [];
         this.color = scaleOrdinal();
-            
-            
-        this.maxValue = max(map(this._data[this.majorkey],s=>max(map(s.data, d=>d.x1))))
+
+        /**
+         * @argument maxValue 데이터의 전체 값중에 최대 값
+         */
+        this.maxValue = max(map(this._data[this.majorkey] as HierarchyDatum[], s=>max(map(s.data, d=>d.x1))))
 
         this.rxRange = [this.margin.left, this.width/2 - this.margin.right];
         this.lxRange = [this.width/2 - this.margin.right, this.margin.left];
 
         this.xDomain = [0, this.maxValue]
-        this.xScale = scaleLinear().domain([0, this.maxValue]).range([0, (this.width/2-this.margin.middle)]).nice();
-        this.rxScale =scaleLinear().domain(this.xDomain).range(this.rxRange);
-        this.lxScale =scaleLinear().domain(this.xDomain).range(this.lxRange);
+        /**
+         * @argument xScale  기준이 되는 x 축 scale
+         * @argument rxScale 오른쪽 x 축 scale
+         * @argument lxScale 왼쪽 x 축 scale
+         */
+        this.xScale = scaleLinear().domain(this.xDomain).range([0, (this.width/2-this.margin.middle-this.margin.right)]).nice();
+        this.rxScale =scaleLinear().domain(this.xDomain).range(this.rxRange).nice();
+        this.lxScale =scaleLinear().domain(this.xDomain).range(this.lxRange).nice();
 
-        this.rxAxis = axisBottom(this.rxScale).ticks(this.width / 80, "s");
-        this.lxAxis = axisBottom(this.lxScale).ticks(this.width / 80, "s");
+        this.rxAxis = axisBottom(this.rxScale).ticks(this.width / 80, "s").tickSizeOuter(0)
+        this.lxAxis = axisBottom(this.lxScale).ticks(this.width / 80, "s").tickSizeOuter(0)
 
-  
         this.yRange = [this.margin.top, this.height - this.margin.bottom];
         this.yDomain = ["<5", "5-9", "10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84", "≥85"]
 
-        this.yScale =  scaleBand<number|string>().domain(this.yDomain).range(this.yRange).paddingInner(this.paddinginner).paddingOuter(this.paddingouter);
-        this.ryAxis = axisRight(this.yScale).tickSize(4);
-        this.lyAxis = axisLeft(this.yScale).tickSize(4);
+        this.yScale =  scaleBand<number|string>().domain(this.yDomain).range(this.yRange).paddingInner(0.2).paddingOuter(0.2);
+        this.ryAxis = axisRight(this.yScale).tickSize(4).tickSizeOuter(0)
+        this.lyAxis = axisLeft(this.yScale).tickSize(4).tickSizeOuter(0)
 
     }
  
     public update(){
-        const Fdata = filter(this._data[this.majorkey],d=>d.name == "Female")
-        const Mdata = filter(this._data[this.majorkey],d=>d.name == "Male")
+        // 데이터에 있는 남성, 여성 데이터를 각각 나눠서 저장함.
+        const Fdata = filter(this._data[this.majorkey],d=>d.name == "Female") as HierarchyDatum[]
+        const Mdata = filter(this._data[this.majorkey],d=>d.name == "Male") as HierarchyDatum[]
 
-        this.color = scaleOrdinal(this.submajordatas, schemeTableau10)
-        console.log(this.color("Math"))
+        //this.submajordatas 값이 function inputData가 끝나야 값을 받기 때문에 색상을 여기서 설정함
+        this.color = this.color.domain(this.submajordatas).range(schemeTableau10)
 
         const svg = select(this._tagName)
                 .append("svg")
@@ -133,72 +129,69 @@ class chart {
                 .attr("viewBox", [0,0,this.width, this.height])
                 .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
 
-        let g = svg.append('g')
-        .attr('class', 'inner-region')
-   
-        // DRAW AXES
-        g.append('g')
-            .attr('class', 'axis y right')
-            .attr('transform', `translate(${this.width/2+this.margin.middle}, 0)`)
+        // x, y axis 그리기 tag 생성
+        svg.append("g")
+            .attr("class", "d3chart_distribute_lxAxis")
+            .attr("transform", `translate(0, ${this.height-this.margin.bottom})`)
+            .call(this.lxAxis);
+
+        svg.append("g")
+            .attr("class", "d3chart_distribute_ryAxis")
+            .attr("transform", `translate(${this.width/2-this.margin.left}, 0)`)
+            .call(this.ryAxis)
+            .call(g=>g.selectAll(".tick text").remove())
+
+        svg.append("g")
+            .attr("class", "d3chart_distribute_lyAxis")
+            .attr("transform", `translate(${this.width/2+this.margin.middle}, 0)`)
             .call(this.lyAxis)
-                .selectAll('text')
-                .attr('dx',`-${this.margin.middle * 0.65}`)
-                .style('text-anchor', 'middle');
+                .selectAll("text")
+                .attr("dx",`-${this.margin.middle * 0.65}`)
+                .style("text-anchor", "middle");
                 
-        g.append('g')
-        .attr('class', 'axis x right')
-        .attr('transform', `translate(${this.width/2},${this.height-this.margin.bottom})`)
-        .call(this.rxAxis);
+        svg.append("g")
+            .attr("class", "d3chart_distribute_rxAxis")
+            .attr("transform", `translate(${this.width/2},${this.height-this.margin.bottom})`)
+            .call(this.rxAxis);
 
-
-        g.append('g')
-        .attr('class', 'axis y left')
-        .attr('transform', `translate(${this.width/2-this.margin.left}, 0)`)
-        .call(this.ryAxis)
-        .call(g=>g.selectAll(".tick text").remove())
-
-        g.append('g')
-        .attr('class', 'axis x left')
-        .attr('transform', `translate(0, ${this.height-this.margin.bottom})`)
-        .call(this.lxAxis);
-
-
-        g.append("text")    
+        //중앙 남여 표시 글 tag 생성
+        svg.append("text")    
             .attr("transform",`translate(${this.width/2},${this.height-10})`)
             .attr("text-anchor", "middle")
             .text(this.xLabel)
 
-                
-        let lBarGroup = g.append('g').data(Fdata)
-        .attr('transform', `translate(${this.width/2-this.margin.left}, 0)` + 'scale(-1,1)');
+        // 오른쪽 여성(rBarGroup), 왼쪽 남성(lBarGroup) 분리해서 bar 만들기        
+        let lBarGroup = svg.append("g").data(Fdata)
+            .attr("transform", `translate(${this.width/2-this.margin.left}, 0)` + "scale(-1,1)");
 
-        let rBarGroup = g.append('g').data(Mdata)
-            .attr('transform',`translate(${this.width/2+this.margin.middle}, 0)`);
+        let rBarGroup = svg.append("g").data(Mdata)
+            .attr("transform",`translate(${this.width/2+this.margin.middle}, 0)`);
 
         lBarGroup.selectAll("g")
-            .data(d=>d.data)
+            .data(d=>d.data as HierarchyDatum[])
             .join("rect")
-                .attr("fill", d =>this.color(d.name))
-                .attr("y",d=>this.yScale(this.yDomain[d.index]))
-                .attr("x",d=>this.xScale(d.x0))
-                .attr("width",d=>this.xScale(d.value))
+                .attr("fill", d =>this.color(d.name as string))
+                .attr("y",d=>this.yScale(this.yDomain[d.index as number])as number)
+                .attr("x",d=>this.xScale(d.x0 as number))
+                .attr("width",d=>this.xScale(d.value as number))
                 .attr("height",this.yScale.bandwidth())
 
-       
         rBarGroup.selectAll("g")
-        .data(d=>d.data)
+        .data(d=>d.data as HierarchyDatum[])
         .join("rect")
-            .attr("fill", d =>this.color(d.name))
-            .attr("y",d=>this.yScale(this.yDomain[d.index]))
-            .attr("x",d=>this.xScale(d.x0))
-            .attr("width",d=>this.xScale(d.value))
+            .attr("fill", d =>this.color(d.name as string))
+            .attr("y",d=>this.yScale(this.yDomain[d.index as number])as number)
+            .attr("x",d=>this.xScale(d.x0 as number))
+            .attr("width",d=>this.xScale(d.value as number))
             .attr("height",this.yScale.bandwidth())
 }
 
+    /**
+     * 변경할 데이터를 넣어주는 함수
+     * @param data {major:[{sex:[{age:[{sumajor:, value:}]}]}]}
+     * @returns 수정된 데이터가 반환됨 {major:[{sex:[{data:[{sumajor, value, index ...}]}]}]}
+     */
 
-    // [(math)[[0,10,data{}],[0,15,data{}],[0,20,data{}],[0,23,data{}] ...],
-    //  (game)[[10,15,data{}],[15,25,data{}],[20,21,data{}],[23,32,data{}]...],
-    //  (engineer)[[15,16,data{}],[25,31,data{}],[21,32,data{}],[32,35,data{}]...]]
     public inputData(data:HierarchyDatum[]){
         let finaldict:{[key:string]:any} = {}
         for (let i in data){

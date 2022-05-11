@@ -42,7 +42,9 @@ module.exports = {
     d3Public:"./src/d3Index.ts",
     d3Classtest:"./src/graph/stats/stats.ts",
     d3Distribution:"./src/graph/distribution/distribution.ts",
-    d3Percentage:"./src/graph/percentage/percentage.ts"
+    d3Percentage:"./src/graph/percentage/percentage.ts",
+    d3Normal:"./src/graph/normal/normal.ts",
+    d3Pie:"./src/graph/pie/pie.ts"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
