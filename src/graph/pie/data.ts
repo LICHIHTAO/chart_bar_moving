@@ -3,7 +3,7 @@ export interface HierarchyDatum {
     value?: number;
     index?: number;
     startAngle?: number;
-    engAngle?: number;
+    endAngle?: number;
     children?: Iterable<HierarchyDatum>;
 }
 
